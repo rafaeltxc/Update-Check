@@ -15,13 +15,6 @@ sudo rm /etc/systemd/system/update.service >> /dev/null 2>&1
 systemctl daemon-reload
 sudo rm /etc/sudoers.d/updatecheck >> /dev/null 2>&1
 
-# Remove environment variables.
-declare env_variables=("PKG_MG" "UPDATE_CMD" "DF_TERMINAL")
-
-for var in "${env_variables[@]}"; do
-  sudo sed -i "s/^$var=//g" /etc/environment
-done
-
 # Exit code
 echo "Updatecheck successfully uninstalled"
 exit 0

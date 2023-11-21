@@ -1,17 +1,23 @@
 [Unit]
 Description=Update Check Service
-After=default.target graphical.target
+After=default.target graphical.target network-online.target
+Wants=graphical.target network-online.target
 
 [Service]
 Type=simple
 User=rtxct
-Environment=DISPLAY=:0
-ExecStartPre=/bin/sleep 5
+Environment="DISPLAY=:0"
+Environment="DF_TERMINAL=alacritty"
+Environment="PKG_MG=pacman"
+Environment="UPDATE_CMD=-Syu --noconfirm"
+ExecStartPre=/bin/sleep 120
 ExecStart=/etc/updatecheck/update.sh
 Restart=on-failure
 RestartSec=5s
+TimeoutStartSec=300
+RemainAfterExit=false
 StandardOutput=journal+console
 StandardError=journal+console
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical.target

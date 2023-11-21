@@ -21,21 +21,6 @@ fi
 
 source $file_dir/environment/system.sh
 
-# Persist environment variables.
-if [ ! -f /etc/environment ]; then
-    sudo touch /etc/environment
-fi
-
-declare env_variables=("PKG_MG" "UPDATE_CMD" "DF_TERMINAL")
-
-for var in "${env_variables[@]}"; do
-    if grep -q "^$var=" /etc/environment; then
-        sudo sed -i "s#^$var=.*#$var=$(printf "%s\n" "${!var}")#" /etc/environment
-    else
-        sudo echo "$var="${!var}"" >> /etc/environment
-    fi
-done
-
 # Assert needed scripts in the system.
 if [ ! -d /etc/updatecheck ]; then
     sudo mkdir /etc/updatecheck
@@ -49,7 +34,7 @@ if [ ! -f /etc/sudoers.d/updatecheck ]; then
 fi
 
 if ! grep -q "^.*NOPASSWD:.*" /etc/sudoers.d/updatecheck; then
-    echo "$SUDO_USER ALL=(ALL:ALL) NOPASSWD: /etc/updatecheck/update.sh" > /etc/sudoers.d/updatecheck
+  echo "$SUDO_USER ALL=(ALL:ALL) NOPASSWD: /etc/updatecheck/update.sh, $(echo $(command -v $PKG_MG)) $UPDATE_CMD" > /etc/sudoers.d/updatecheck
 fi
 
 # Change files permissions for executation.
@@ -61,6 +46,13 @@ sudo chown root:root /etc/updatecheck/update.sh
 sudo chmod 755 /etc/updatecheck/update.sh
 
 # Assert system service
+declare env_variables=("DF_TERMINAL" "PKG_MG" "UPDATE_CMD")
+
+sudo sed -i "s/^User=.*/User=$SUDO_USER/" $file_dir/update.service
+for var in "${env_variables[@]}"; do
+    sudo sed -i "s#^.*$var.*#Environment=\"$var=$(printf "%s\n" "${!var}")\"#" $file_dir/update.service
+done
+
 if [ ! -f /etc/systemd/system/update.service ]; then
     sudo cp $file_dir/update.service /etc/systemd/system/
 fi
