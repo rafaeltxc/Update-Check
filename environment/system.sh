@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Get variables
+# Get system Distro and set variables accordingly.
 declare distro=${Distro[$(lsb_release -si)]}
 
 declare pkg_manager=$(echo $distro | jq -r '.package_manager')
 declare update_command=$(echo $distro | jq -r '.update_command')
 declare terminal=$(echo $TERM)
 
-# Check if terminal is valid
+# Validates terminal and if it's not valid, asks user for an option.
 declare isTerminal=false
 
 if command -v "$terminal" &> /dev/null; then
@@ -21,7 +21,7 @@ else
     done
 fi
 
-# Export variables
+# Export environment variables.
 export PKG_MG="$pkg_manager"
 export UPDATE_CMD="$update_command"
 export DF_TERMINAL="$terminal"

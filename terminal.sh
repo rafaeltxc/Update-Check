@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Assert correct terminal syntaxy.
+#
+# param terminal_emulator Receives given terminal.
+# param command_to_execute Receives command to be executed.
+# return Command execution of a command in a new terminal.
 execute_in_terminal() {
     local terminal_emulator=$1
     local command_to_execute=$2

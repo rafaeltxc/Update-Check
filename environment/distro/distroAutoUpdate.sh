@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Json like sctructure with distros names and they respective package manager, with their method of system updating skipping secutiry questions.
 declare -A Distro=(
     ["Alpine"]='{ "package_manager": "apk", "update_command": "update && upgrade --no-cache" }'
     ["Arch"]='{ "package_manager": "pacman", "update_command": "-Syu --noconfirm" }'

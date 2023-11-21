@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Json like sctructure with distros names and they respective package manager, with their method of system updating.
 declare -A Distro=(
     ["Alpine"]='{ "package_manager": "apk", "update_command": "update && upgrade" }'
     ["Antergos"]='{ "package_manager": "pacman", "update_command": "-Syu" }'

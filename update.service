@@ -1,0 +1,17 @@
+[Unit]
+Description=Update Check Service
+After=default.target graphical.target
+
+[Service]
+Type=simple
+User=rtxct
+Environment=DISPLAY=:0
+ExecStartPre=/bin/sleep 5
+ExecStart=/etc/updatecheck/update.sh
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal+console
+StandardError=journal+console
+
+[Install]
+WantedBy=default.target
