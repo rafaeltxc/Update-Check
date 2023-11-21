@@ -11,8 +11,10 @@ trap 'echo "Installation stoped"; exit 1' INT
 
 # Remove configuration files and scripts.
 sudo rm -rf /etc/updatecheck >> /dev/null 2>&1
+sudo systemctl disable update
 sudo rm /etc/systemd/system/update.service >> /dev/null 2>&1
-systemctl daemon-reload
+sudo rm /etc/systemd/system/graphical.target.wants/update.service>> /dev/null 2>&1
+sudo systemctl daemon-reload
 sudo rm /etc/sudoers.d/updatecheck >> /dev/null 2>&1
 
 # Exit code
