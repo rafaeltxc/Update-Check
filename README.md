@@ -16,7 +16,7 @@ to execute the appropriate update command based on the distribution in use.
 
 To install the script and initiate the service, run the following command:
 ```console
-sudo sh install.sh
+sh install.sh
 ```
 The script will automatically gather the necessary environment variables and 
 if it cannot determine the system terminal, it will prompt the user to input a preferred one.
