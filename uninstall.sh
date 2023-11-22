@@ -14,7 +14,7 @@ sudo rm -rf /etc/updatecheck >> /dev/null 2>&1
 sudo systemctl disable update
 sudo rm /etc/systemd/system/update.service >> /dev/null 2>&1
 sudo rm /etc/systemd/system/graphical.target.wants/update.service>> /dev/null 2>&1
-sudo systemctl daemon-reload
+sudo systemctl daemon-reload >> /dev/null 2>&1
 sudo rm /etc/sudoers.d/updatecheck >> /dev/null 2>&1
 
 # Exit code
