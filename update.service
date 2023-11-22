@@ -5,7 +5,7 @@ Wants=graphical.target network-online.target
 
 [Service]
 Type=simple
-User=rtxct
+User=host
 Environment="DISPLAY=:0"
 Environment=DF_TERMINAL
 Environment=PKG_MG
