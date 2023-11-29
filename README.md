@@ -1,6 +1,6 @@
 # Linux bash script to automate system update.
 
-### About
+### Overview
 This project consists of a script designed to run on every boot, immediately after the kernel initialization, and once all necessary dependencies are satisfied.
 The functionality is to initiate a system update process, specific to the distribution being used.
 
