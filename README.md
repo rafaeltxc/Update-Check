@@ -14,6 +14,8 @@ to execute the appropriate update command based on the distribution in use.
 ### Usage
 **Note:** The script only work for distributions that works around systemd.
 
+First, make sure that you have **lsb_resalese** package installed on your system, since the script needs it to find the OS.
+
 To install the script and initiate the service, run the following command:
 ```console
 sh install.sh
