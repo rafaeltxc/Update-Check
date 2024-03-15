@@ -1,5 +1,9 @@
 # Linux bash script to automate system update.
 
+## Maintenance
+**The system may not function correctly in some distros for now, project is being fixed.**
+##
+
 ### Overview
 This project consists of a script designed to run on every boot, immediately after the kernel initialization, and once all necessary dependencies are satisfied.
 The functionality is to initiate a system update process, specific to the distribution being used.
@@ -18,7 +22,7 @@ First, make sure that you have **lsb_resalese** package installed on your system
 
 To install the script and initiate the service, run the following command:
 ```console
-sh install.sh
+bash install.sh
 ```
 The script will automatically gather the necessary environment variables and 
 if it cannot determine the system terminal, it will prompt the user to input a preferred one.
@@ -37,7 +41,7 @@ If for any reason, you find the need to reinstall the script, firstly, run the u
 ### Uninstalling
 To remove the script and its associated components, run the uninstallation script with the following command:
 ```console
-sh uninstall.sh
+bash uninstall.sh
 ```
 The uninstallation script will automatically eliminate all related files and scripts from the system. Additionally, it will disable the service along with its symlink. Once the uninstallation process is complete, the system will no longer perform automatic updates.
 
