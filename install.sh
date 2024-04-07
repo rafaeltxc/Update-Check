@@ -25,8 +25,8 @@ source $file_dir/environment/system.sh
 if [ ! -d /etc/updatecheck ]; then
     sudo mkdir /etc/updatecheck
 fi
-sudo cp $file_dir/update.sh /etc/updatecheck/
-sudo cp $file_dir/terminal.sh /etc/updatecheck/
+sudo cp $file_dir/config/update.sh /etc/updatecheck/
+sudo cp $file_dir/environment/terminal.sh /etc/updatecheck/
 
 # Add sudoers configuration file to handle script without the need of password.
 if [ ! -f /etc/sudoers.d/updatecheck ]; then
@@ -48,13 +48,13 @@ sudo chmod 755 /etc/updatecheck/update.sh
 # Assert system service
 declare env_variables=("DF_TERMINAL" "PKG_MG" "UPDATE_CMD")
 
-sudo sed -i "s/^User=.*/User=$SUDO_USER/" $file_dir/update.service
+sudo sed -i "s/^User=.*/User=$SUDO_USER/" $file_dir/config/update.service
 for var in "${env_variables[@]}"; do
-    sudo sed -i "s#^.*$var.*#Environment=\"$var=$(printf "%s\n" "${!var}")\"#" $file_dir/update.service
+    sudo sed -i "s#^.*$var.*#Environment=\"$var=$(printf "%s\n" "${!var}")\"#" $file_dir/config/update.service
 done
 
 if [ ! -f /etc/systemd/system/update.service ]; then
-    sudo cp $file_dir/update.service /etc/systemd/system/
+    sudo cp $file_dir/config/update.service /etc/systemd/system/
 fi
 sudo chmod 644 /etc/systemd/system/update.service
 

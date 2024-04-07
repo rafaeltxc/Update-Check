@@ -17,9 +17,9 @@ declare -A Distro=(
     ["openSUSE"]='{ "package_manager": "zypper", "update_command": "update --non-interactive" }'
     ["Pop!_OS"]='{ "package_manager": "apt", "update_command": "update && upgrade -y" }'
     ["Red Hat Enterprise Linux (RHEL)"]='{ "package_manager": "yum", "update_command": "update -y" }'
-    ["Slackware"]='{ "package_manager": "slackpkg", "update_command": "update && upgrade-all" }'
     ["Solus"]='{ "package_manager": "eopkg", "update_command": "up -y" }'
     ["Ubuntu"]='{ "package_manager": "apt", "update_command": "update && upgrade -y" }'
     ["Void Linux"]='{ "package_manager": "xbps-install", "update_command": "-Su --yes" }'
     ["Zorin OS"]='{ "package_manager": "apt", "update_command": "update && upgrade -y" }'
 )
+
