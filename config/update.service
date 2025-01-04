@@ -5,11 +5,11 @@ Wants=graphical.target network-online.target
 
 [Service]
 Type=simple
-User=rtxct
+User=host
 Environment="DISPLAY=:0"
-Environment="DF_TERMINAL=alacritty"
-Environment="PKG_MG=pacman"
-Environment="UPDATE_CMD=-Syu"
+Environment=DF_TERMINAL
+Environment=PKG_MG
+Environment=UPDATE_CMD
 ExecStart=/etc/updatecheck/update.sh
 Restart=on-failure
 RestartSec=5s
