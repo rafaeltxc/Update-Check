@@ -34,7 +34,7 @@ if [ ! -f /etc/sudoers.d/updatecheck ]; then
 fi
 
 if ! grep -q "^.*NOPASSWD:.*" /etc/sudoers.d/updatecheck; then
-  echo "$SUDO_USER ALL=(ALL:ALL) NOPASSWD: /etc/updatecheck/update.sh, $(echo $(command -v $PKG_MG)) $UPDATE_CMD" > /etc/sudoers.d/updatecheck
+  echo "$SUDO_USER ALL=(ALL:ALL) NOPASSWD: /etc/updatecheck/update.sh $(echo $(command -v $PKG_MG)) $UPDATE_CMD" > /etc/sudoers.d/updatecheck
 fi
 
 # Change files permissions for executation.
