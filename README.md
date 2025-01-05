@@ -1,5 +1,5 @@
 ### Overview
-Shell Script program to automate the processes of symlinking the actions to execute a automatic full system update on every boot.
+Shell Script program to automate the processes of symlinking the actions to execute an automatic full system update on every boot.
 
 > [!NOTE]  
 > This is only a pseudo-generic shell script, so bugs and malfunctioning are prone to happen depending on the environment and its configuration. Some debuging and extra configuration may be necessary.
